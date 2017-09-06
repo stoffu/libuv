@@ -160,11 +160,11 @@ if errorlevel 1 exit /b 1
 
 :run
 @rem Run tests if requested.
-if "%run%"=="" goto exit
-if not exist %config%\%run% goto exit
+if "%run%"=="" GOTO:EOF
+if not exist %config%\%run% GOTO:EOF
 echo running '%config%\%run%'
 %config%\%run%
-goto exit
+GOTO:EOF
 
 :create-msvs-files-failed
 echo Failed to create vc project files.
@@ -176,6 +176,6 @@ echo Examples:
 echo   vcbuild.bat              : builds debug build
 echo   vcbuild.bat test         : builds debug build and runs tests
 echo   vcbuild.bat release bench: builds release build and runs benchmarks
-goto exit
+GOTO:EOF
 
 :exit
